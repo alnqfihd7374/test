@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blue to White Gradient Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        navy: "#0A192F",
+                        primary: "#1E3A8A",
+                        accent: "#3B82F6",
+                    },
+                    fontFamily: {
+                        display: ["'Noto Kufi Arabic'", "sans-serif"],
+                        sans: ["'Noto Kufi Arabic'", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1.25rem",
+                        'xl': '1.75rem',
+                        '2xl': '2rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        body {
+            font-family: 'Noto Kufi Arabic', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .gradient-bg {
+            background: linear-gradient(to bottom, #0A192F 0%, #0D2142 35%, #F8FAFC 85%, #FFFFFF 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08), 0 4px 12px -4px rgba(0, 0, 0, 0.03);
+        }
+    </style>
+<style>
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-slate-200 min-h-screen flex justify-center items-center">
+<div class="w-full max-w-[430px] h-[932px] gradient-bg relative overflow-hidden flex flex-col shadow-2xl phone-frame">
+<div class="pt-14 pb-8 px-6 relative z-10">
+<div class="flex justify-between items-center mb-8">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10">
+<span class="material-symbols-outlined text-white text-2xl">notifications</span>
+</div>
+<div class="w-11 h-11 rounded-2xl bg-white/10 flex items-center justify-center backdrop-blur-md border border-white/10">
+<span class="material-symbols-outlined text-white text-2xl">menu</span>
+</div>
+</div>
+<div class="w-11 h-11 rounded-2xl border-2 border-white/20 overflow-hidden shadow-lg">
+<img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm-gCYZxYq4jDfdA8nVaRw4ANQJIa5Wmm-Isp-vZy7lWR8Xq5Ar_HVruff7RVPrFqHQ7VIUzT1MKlZtXQlImmOWbefYSCkiZrFCzmUSj4LTOyEd2okunZLh8Ubh2-Su9GGWIgAmyb03L2J5MXdkFRljXGmxlY9KrfvdutzQAx_3ja0X0WXtt3XTs3zPJtIPCpeMryN81UUh38Uqw1xsS6dc48OdkWpVrKxb73q0ojxbIgcVkYNulO0OP3xM2p7Y4NoWjy40EWB6Ho"/>
+</div>
+</div>
+<div class="text-white">
+<h1 class="text-3xl font-bold mb-2">مرحباً أبا الحسن</h1>
+<p class="text-white/70 text-sm font-medium">نسأل الله أن يبارك لك في وقتك وينفعك بالعلم</p>
+</div>
+<div class="mt-8">
+<div class="bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl flex items-center px-4 py-3.5 shadow-lg">
+<span class="material-symbols-outlined text-white/60 ml-2">search</span>
+<input class="bg-transparent border-none text-white placeholder-white/50 focus:ring-0 text-sm w-full text-right" dir="rtl" placeholder="ابحث عن درس، كتاب، أو فتوى..." type="text"/>
+<span class="material-symbols-outlined text-white/60 mr-2">tune</span>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto px-6 pb-32 hide-scrollbar relative z-10">
+<div class="mb-6">
+<div class="bg-white p-5 rounded-3xl card-shadow border border-white/60 flex justify-between items-center transition-transform active:scale-[0.98]">
+<div class="flex items-center gap-4">
+<div class="w-14 h-14 rounded-2xl bg-navy flex items-center justify-center shadow-lg shadow-navy/20">
+<span class="material-symbols-outlined text-white text-3xl">auto_stories</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 text-lg">مكتبتك</h3>
+<p class="text-xs text-slate-500 font-medium">إجمالي 45 كتاب مدرج</p>
+</div>
+</div>
+<div class="text-navy">
+<span class="material-symbols-outlined font-bold">arrow_back_ios</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mb-8">
+<div class="bg-white p-5 rounded-3xl card-shadow border border-white/60 relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-600">
+<span class="material-symbols-outlined text-2xl font-bold">history_edu</span>
+</div>
+<div class="bg-green-500 w-5 h-5 rounded-full flex items-center justify-center text-[10px] text-white shadow-sm">✓</div>
+</div>
+<h4 class="font-bold text-slate-800 text-sm mb-1">الدرس اليومي</h4>
+<div class="flex items-baseline gap-1 mb-3">
+<span class="text-2xl font-bold text-slate-900">1/3</span>
+<span class="text-[10px] text-slate-500 font-bold">مكتمل</span>
+</div>
+<div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+<div class="bg-navy h-full w-1/3 rounded-full"></div>
+</div>
+<p class="text-[10px] text-slate-400 font-bold mt-2">33% من الخطة اليومية</p>
+</div>
+<div class="bg-white p-5 rounded-3xl card-shadow border border-white/60">
+<div class="flex justify-between items-start mb-4">
+<div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-2xl">campaign</span>
+</div>
+<div class="w-2.5 h-2.5 bg-red-500 rounded-full"></div>
+</div>
+<h4 class="font-bold text-slate-800 text-sm mb-1">الإعلانات</h4>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-bold text-slate-900">26</span>
+</div>
+<p class="text-[10px] text-slate-400 font-bold mt-2">تنبيهات جديدة اليوم</p>
+<div class="mt-4 flex -space-x-2 space-x-reverse">
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-200"></div>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-slate-300"></div>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-navy flex items-center justify-center text-[8px] font-bold text-white shadow-sm">+3</div>
+</div>
+</div>
+</div>
+<div class="mb-4 flex justify-between items-center">
+<h3 class="font-bold text-xl text-slate-900">المستجدات</h3>
+<button class="text-navy text-sm font-bold bg-white/50 backdrop-blur-sm px-4 py-1.5 rounded-full border border-slate-200 shadow-sm">عرض الكل</button>
+</div>
+<div class="flex overflow-x-auto gap-5 pb-6 hide-scrollbar -mx-6 px-6">
+<div class="min-w-[190px] bg-white rounded-[2rem] relative overflow-hidden aspect-[3/4] card-shadow group border border-slate-100">
+<img alt="Islamic Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS5eDj3TR2jsMM0t4NkJZDdvN56Y7gKJ257yFuzKYbFnCvh1PnX5tbas952dnoMQtdhDaS5tmBbKVjF_XOVfAGOtA9g8MziZG1dKjtZqQwkEQEl0CLrRAjyET99iut481pBNjj5zIXJ_KP1R6JIdfvHslZbnx6Vk0eQVunoKs7DYc3GRYMZ2RYQK3BXRv8UafZAnvhogdAtb__OU7_oRwFDtlCbrUr3KPzr0L5QLbyj_Dx8eQ6uxn3fB4M2qoObZKxJ0ucrFRJNWo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent"></div>
+<div class="absolute bottom-5 right-5 left-5">
+<p class="text-white text-sm font-bold leading-tight line-clamp-2">شرح كتاب التوحيد</p>
+<p class="text-white/60 text-[11px] mt-1">المجلد الأول</p>
+</div>
+</div>
+<div class="min-w-[190px] bg-white rounded-[2rem] relative overflow-hidden aspect-[3/4] card-shadow group border border-slate-100">
+<img alt="Islamic Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUNK-E1Fp_8lVuqYgVrYmQbeiBbOrrd7wHRE5h6Lcx97cfsSQezUq5x42FkAhyl7rnZxvuQYTi8QKdF8Augqwc0tRdd6AxsG-3ADcNEHZZehvB0DgvjC15MkpGXXxk2rj7nO6-BX7DeKucmf6TYXd2UC8nakF0RJS1DXkR7apI3IgAH8UobUqN1uFv2KpqonHjdSOSGdRJsDYt9pLTuWCC3a4KSHdQzxtNQV-AVnGNJou-iBrZ0wLwKGC_GBD2r0xBC30-ghg4ny8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent"></div>
+<div class="absolute bottom-5 right-5 left-5">
+<p class="text-white text-sm font-bold leading-tight line-clamp-2">تفسير القرآن الكريم</p>
+<p class="text-white/60 text-[11px] mt-1">ابن كثير</p>
+</div>
+</div>
+<div class="min-w-[190px] bg-white rounded-[2rem] relative overflow-hidden aspect-[3/4] card-shadow group border border-slate-100">
+<img alt="Islamic Book Cover" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjYWfb893-Q_YcOoudH4eREZtUZkTcJzLUIG4XmH5u9H0d0Mj4nZRkIuS9yTg4mn-iUz3QZeZreeohlXjRTkTMolKoFgA43ippTn8daUnbAvclCHjOy9W5mGZSBt_nliNvxZW_kzsRXoU1O5nfmS4IyZh5_1RApGuSJtdhkxaQsVHz4W82hpDVejNdjhBtiMWH8CfWZzxJAY9zN5moM0ezCfc4nwThGPFxIEW5ksvIyqXFgjm7hrgJ5YEy3Bz3SMLRVn0vw19gvAA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent"></div>
+<div class="absolute bottom-5 right-5 left-5">
+<p class="text-white text-sm font-bold leading-tight line-clamp-2">رياض الصالحين</p>
+<p class="text-white/60 text-[11px] mt-1">للإمام النووي</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-8 left-6 right-6 h-20 bg-white/95 backdrop-blur-2xl rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] flex items-center justify-around px-4 border border-slate-100 z-50">
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-navy transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">school</span>
+<span class="text-[10px] font-bold">الدروس</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-navy transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">podcasts</span>
+<span class="text-[10px] font-bold">الصوتيات</span>
+</a>
+<div class="relative -mt-12">
+<a class="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center shadow-xl shadow-navy/30 border-4 border-white" href="#">
+<span class="material-symbols-outlined text-white text-3xl">home</span>
+</a>
+</div>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-navy transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">library_books</span>
+<span class="text-[10px] font-bold">المؤلفات</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-navy transition-colors" href="#">
+<span class="material-symbols-outlined text-2xl">location_on</span>
+<span class="text-[10px] font-bold">المعالم</span>
+</a>
+</div>
+<div class="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-slate-300/50 rounded-full z-50"></div>
+</div>
+
+</body></html>

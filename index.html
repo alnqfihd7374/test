@@ -3,53 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تحربة أبوالحسن</title>
-    <style>
-        /* إعدادات الصفحة لتوسط العنصر */
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center; /* التوسط الأفقي */
-            align-items: center;     /* التوسط العمودي */
-            min-height: 100vh;       /* ملء طول الشاشة */
-            background-color: #f4f4f4; /* لون الخلفية المطلوب */
-            font-family: Arial, sans-serif;
-        }
-
-        /* تصميم المستطيل بناءً على وصفك */
-        .custom-box {
-            width: 600px;           /* العرض المطلوب */
-            height: 350px;          /* الارتفاع المطلوب */
-            background-color: #ffffff; /* لون المستطيل أبيض */
-            
-            /* الإطار (Stroke) */
-            border: 3px solid #0056b3; 
-            border-radius: 15px;    /* انحناء الزوايا */
-
-            /* الظل (Drop Shadow) */
-            /* x=-4px (لليسار), y=0, blur=10px (لإعطاء تأثير واقعي) */
-            box-shadow: -4px 0px 15px rgba(0, 0, 0, 0.3);
-
-            /* توسيط النص داخل المستطيل */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .custom-box h1 {
-            font-weight: bold;      /* خط عريض */
-            font-size: 3rem;
-            color: #333;
-            margin: 0;
-        }
-    </style>
+    <title>التقييم الرقمي للإجهاد المعرفي | Digital Cognitive Stress Assessment</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-theme">
 
-    <div class="custom-box">
-        <h1>أبوالحسن</h1>
-    </div>
+    <main class="app-container">
+        
+        <header class="assessment-header">
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar" style="width: 0%;"></div>
+            </div>
+            <div class="step-indicator">المرحلة: <span id="currentPageNum">0</span> / 10</div>
+        </header>
 
+        <section id="section-landing" class="screen active">
+            <div class="medical-logo">
+                <div class="icon-brain"></div>
+            </div>
+            <h1>التقييم الرقمي للإجهاد المعرفي</h1>
+            <p class="subtitle">فحص إكلينيكي لقياس مدى تأثير العادات الرقمية على الوظائف الذهنية والتركيز.</p>
+            
+            <div class="input-group">
+                <label for="userName">الاسم الكامل للمشارك:</label>
+                <input type="text" id="userName" placeholder="أدخل اسمك الثلاثي..." required>
+            </div>
+            
+            <button class="btn-primary" onclick="startAssessment()">بدء الفحص السريري</button>
+            <footer class="clinical-note">
+                * يتم التعامل مع البيانات بخصوصية تامة لأغراض التقييم الشخصي فقط.
+            </footer>
+        </section>
+
+        <section id="section-assessment" class="screen hidden">
+            <form id="assessmentForm">
+                
+                <div class="page" id="page-1">
+                    <h3 class="category-title">المحور الأول: التركيز والانتباه</h3>
+                    <div class="question-block">
+                        <p>1. عدم القدرة على قراءة مقال طويل دون الحاجة لتفقد الإشعارات الرقمية.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً / أبداً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>2. ممارسة عادة التنقل بين عدة علامات تبويب (Tabs) كل بضع دقائق دون هدف محدد.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>3. الشعور برغبة ملحة في التقاط الهاتف الذكي فور الاستيقاظ مباشرة.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-2">
+                    <h3 class="category-title">المحور الأول: التركيز والانتباه (تابع)</h3>
+                    <div class="question-block">
+                        <p>4. صعوبة في المحافظة على التركيز في محادثة واقعية لأكثر من 5 دقائق.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>5. الحاجة لوجود ضوضاء خلفية (فيديو أو موسيقى) لإنجاز المهام البسيطة.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <h3 class="category-title">المحور الثاني: معالجة المعلومات</h3>
+                    <div class="question-block">
+                        <p>6. الاعتماد المفرط على الفيديوهات القصيرة (Shorts) للتعلم بدلاً من البحث المتعمق.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-3">
+                    <h3 class="category-title">المحور الثاني: معالجة المعلومات</h3>
+                    <div class="question-block">
+                        <p>7. تجد صعوبة في تذكر الأسماء أو التواريخ دون الاستعانة بالوسائل الرقمية.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>8. الشعور بـ "ضبابية الدماغ" (Brain Fog) بعد قضاء 30 دقيقة في التصفح.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>9. الميل إلى القراءة السريعة (Skimming) للنصوص بدلاً من القراءة التحليلية العميقة.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-4">
+                    <div class="question-block">
+                        <p>10. صعوبة في تخيل المفاهيم أو الأفكار دون وجود وسيلة مساعدة مرئية.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <h3 class="category-title">المحور الثالث: الدوبامين والحالة المزاجية</h3>
+                    <div class="question-block">
+                        <p>11. الشعور بالتوتر أو الانزعاج الملحوظ عند بطء استجابة شبكة الإنترنت.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>12. تفقد تفاعلات التواصل الاجتماعي (الإعجابات/المشاهدات) بشكل قهري متكرر.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-5">
+                    <div class="question-block">
+                        <p>13. المرور بتجربة "متلازمة الاهتزاز الوهمي" (اعتقاد أن الهاتف اهتز وهو لم يفعل).</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>14. فقدان الاهتمام بالهوايات التقليدية التي لا تمنح مكافأة ذهنية فورية.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>15. اللجوء لوسائل التواصل كآلية هروب أساسية عند الشعور بأدنى درجات الملل.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-6">
+                    <h3 class="category-title">المحور الرابع: الوظائف الجسدية والنوم</h3>
+                    <div class="question-block">
+                        <p>16. تجاوز وقت النوم المخطط له بسبب التصفح، مما يؤدي لنوم أقل من 6 ساعات.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>17. المعاناة من إجهاد العين المزمن أو آلام الرقبة بسبب وضعية استخدام الجهاز.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>18. تراجع ملحوظ في النشاط البدني العام مقابل زيادة في وقت الشاشة.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-7">
+                    <div class="question-block">
+                        <p>19. تناول الوجبات الغذائية أثناء مشاهدة محتوى رقمي بدلاً من التركيز على الطعام.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>20. الشعور بالإرهاق الذهني الشديد رغم عدم ممارسة أي مجهود بدني يذكر.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <h3 class="category-title">المحور الخامس: الإدراك الاجتماعي</h3>
+                    <div class="question-block">
+                        <p>21. تفضيل التواصل عبر الوسائل الرقمية على اللقاءات المباشرة وجهاً لوجه.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-8">
+                    <div class="question-block">
+                        <p>22. استخدام مصطلحات "الإنترنت" أو الاختصارات الرقمية في الأحاديث المهنية الرسمية.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>23. تراجع القدرة على إجراء العمليات الحسابية الذهنية البسيطة دون آلة حاسبة.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>24. ملاحظة أن مدى انتباهك (Attention Span) قد قصر بشكل ملحوظ عن العام الماضي.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-9">
+                    <div class="question-block">
+                        <p>25. صعوبة إكمال فيلم سينمائي طويل دون تفقد الهاتف عدة مرات.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>26. نسيان سبب فتح تطبيق معين بمجرد النقر على أيقونته.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>27. الحاجة المستمرة لتوثيق أحداث حياتك رقمياً بدلاً من الاستمتاع بتجربتها فعلياً.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="page hidden" id="page-10">
+                    <div class="question-block">
+                        <p>28. الشعور بالقلق من "فوات الشيء" (FOMO) عند الانقطاع عن الإنترنت ليوم واحد.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>29. صعوبة في الجلوس في صمت تام لمدة 10 دقائق دون استهلاك أي محتوى رقمي.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                    <div class="question-block">
+                        <p>30. ملاحظة تراجع في جودة التفكير الإبداعي أو القدرة على التخيل الحر.</p>
+                        <div class="options-grid">
+                            <button type="button" class="opt-btn" data-value="0">نادراً</button>
+                            <button type="button" class="opt-btn" data-value="1">أحياناً</button>
+                            <button type="button" class="opt-btn" data-value="2">غالباً</button>
+                            <button type="button" class="opt-btn" data-value="3">دائماً</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nav-controls">
+                    <button type="button" id="prevBtn" class="btn-secondary hidden">السابق</button>
+                    <button type="button" id="nextBtn" class="btn-primary">التالي</button>
+                    <button type="button" id="submitBtn" class="btn-primary hidden">استخراج التقرير النهائي</button>
+                </div>
+            </form>
+        </section>
+
+        <section id="section-results" class="screen hidden">
+            <div id="medicalCertificate" class="certificate-card">
+                <div class="cert-header">
+                    <span class="hospital-name">معهد التقييم المعرفي الرقمي</span>
+                    <span class="cert-date" id="currentDate">2024/05/20</span>
+                </div>
+                
+                <div class="cert-body">
+                    <h2>تقرير الحالة الذهنية</h2>
+                    <p>يشهد المعهد بأن المشارك:</p>
+                    <h3 id="displayUserName">[اسم المستخدم]</h3>
+                    <p>قد أتم الفحص الشامل للإجهاد المعرفي، وكانت النتائج كالتالي:</p>
+                    
+                    <div class="result-score-box">
+                        <span class="label">مؤشر التدهور المعرفي الرقمي:</span>
+                        <div class="score-value"><span id="decayPercentage">0</span>%</div>
+                    </div>
+                    
+                    <p class="diagnosis-text" id="diagnosisText">
+                        الحالة تتطلب تقليل التعرض للمثيرات الرقمية لاستعادة التوازن الكيميائي للدوبامين.
+                    </p>
+                </div>
+
+                <div class="cert-footer">
+                    <div class="signature">
+                        <p>الختم الرقمي للفحص</p>
+                        <div class="qr-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-whatsapp" onclick="shareToWhatsApp()">مشاركة عبر WhatsApp</button>
+                <button class="btn-secondary" onclick="location.reload()">إعادة الفحص</button>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

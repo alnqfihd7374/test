@@ -1,0 +1,248 @@
+/* إعدادات المتغيرات والألوان الطبية */
+:root {
+    --bg-color: #050a15;
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent-teal: #2dd4bf;
+    --accent-blue: #3b82f6;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --card-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(45, 212, 191, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 40%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* الحاوية الرئيسية */
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* شريط التقدم */
+.assessment-header {
+    margin-bottom: 30px;
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+}
+
+.progress-container {
+    background: var(--glass-bg);
+    height: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 1px solid var(--glass-border);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-teal));
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.step-indicator {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+    text-align: left;
+}
+
+/* الشاشات (Sections) */
+.screen {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 30px 20px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.5s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* نصوص الواجهة */
+h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    background: linear-gradient(to left, #fff, var(--text-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+/* الأسئلة والخيارات */
+.category-title {
+    color: var(--accent-teal);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 5px;
+}
+
+.question-block {
+    margin-bottom: 35px;
+}
+
+.question-block p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* الأزرار */
+.opt-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 15px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+}
+
+.opt-btn:active, .opt-btn.selected {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-blue), #1e40af);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 15px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--glass-border);
+    padding: 12px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.nav-controls {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* بطاقة الشهادة الطبية */
+.certificate-card {
+    background: #fff; /* خلفية بيضاء للشهادة عند الاستخراج */
+    color: #1a1a1a;
+    padding: 40px 25px;
+    border-radius: 0;
+    border: 8px double #e2e8f0;
+    position: relative;
+    text-align: center;
+}
+
+.dark-theme .certificate-card {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #1e293b;
+}
+
+.result-score-box {
+    margin: 30px 0;
+    padding: 20px;
+    border: 2px solid var(--accent-teal);
+    display: inline-block;
+    border-radius: 15px;
+}
+
+.score-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--accent-teal);
+}
+
+/* مدخلات الاسم */
+.input-group {
+    margin-bottom: 25px;
+    text-align: right;
+}
+
+input[type="text"] {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    padding: 15px;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+/* WhatsApp Button */
+.btn-whatsapp {
+    background: #25d366;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    font-weight: 600;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+/* تحسينات الشاشات الصغيرة */
+@media (max-width: 400px) {
+    h1 { font-size: 1.5rem; }
+    .options-grid { grid-template-columns: 1fr; }
+}

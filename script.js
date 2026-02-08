@@ -137,7 +137,7 @@ function displayResults(percentage) {
 function shareToWhatsApp() {
     const name = document.getElementById('displayUserName').innerText;
     const score = document.getElementById('decayPercentage').innerText;
-    const text = `نتائج الفحص السريري للإجهاد المعرفي الرقمي:\n\nالمشارك: ${name}\nنسبة التدهور المعرفي: ${score}%\n\nيمكنك إجراء الفحص الخاص بك هنا: [رابط الموقع]`;
+    const text = `نتائج الفحص السريري للإجهاد المعرفي الرقمي:\n\nالمشارك: ${name}\nنسبة التدهور المعرفي: ${score}%\n\nيمكنك إجراء الفحص الخاص بك هنا: https://alnqfihd7374.github.io/test/`;
     const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
 }
